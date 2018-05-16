@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/tv_txl"
+        android:layout_width="match_parent"
+        android:layout_height="120px">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="通讯录"
+            android:textColor="#595959"
+            android:textSize="48px" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/re_id"
+        android:layout_width="match_parent"
+        android:layout_height="100px"
+        android:layout_below="@+id/tv_txl">
+
+        <EditText
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="50px"
+            android:layout_marginRight="50px"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="         搜索姓名、警号、手机号"
+            android:background="#edeaea"/>
+        <ImageView
+            android:layout_width="35px"
+            android:layout_height="35px"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="60px"
+            android:background="@drawable/query"/>
+    </RelativeLayout>
+
+    <ExpandableListView
+        android:id="@+id/list_item"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/re_id" />
+</RelativeLayout>

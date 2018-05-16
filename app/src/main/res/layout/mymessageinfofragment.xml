@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/relativelayout1"
+        android:layout_width="match_parent"
+        android:layout_height="120px"
+        android:layout_marginLeft="50px"
+        android:layout_marginRight="50px">
+
+        <ImageView
+            android:id="@+id/back_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:background="@drawable/back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/back_image"
+            android:paddingLeft="20px"
+            android:text="返回"
+            android:textColor="#595959"
+            android:textSize="40px" />
+
+
+    </RelativeLayout>
+
+    <View
+        android:layout_below="@+id/relativelayout1"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="#cfcece" />
+
+    <RelativeLayout
+        android:id="@+id/relativelayout2"
+        android:layout_width="match_parent"
+        android:layout_height="355px"
+        android:layout_below="@+id/relativelayout1">
+        <ImageView
+            android:layout_width="200px"
+            android:layout_height="200px"
+            android:id="@+id/mapimageview"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="75px"/>
+    </RelativeLayout>
+
+    <View
+        android:layout_below="@+id/relativelayout2"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="#cfcece" />
+    <RelativeLayout
+        android:id="@+id/relativelayout3"
+        android:layout_width="match_parent"
+        android:layout_height="100px"
+        android:layout_marginLeft="50px"
+        android:layout_below="@+id/relativelayout2">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="姓名: "
+            android:textSize="36px"
+            android:id="@+id/name_textview"
+            android:textColor="#595959"
+            android:layout_centerVertical="true"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="36px"
+            android:id="@+id/setname_textview"
+            android:textColor="#595959"
+            android:layout_toRightOf="@+id/name_textview"
+            android:layout_centerVertical="true"/>
+    </RelativeLayout>
+    <View
+        android:layout_below="@+id/relativelayout3"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="#cfcece" />
+    <RelativeLayout
+        android:id="@+id/relativelayout4"
+        android:layout_width="match_parent"
+        android:layout_height="100px"
+        android:layout_marginLeft="50px"
+        android:layout_below="@+id/relativelayout3">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="警号: "
+            android:textSize="36px"
+            android:id="@+id/ploce_textview"
+            android:textColor="#595959"
+            android:layout_centerVertical="true"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="36px"
+            android:id="@+id/plocenum_textview"
+            android:textColor="#595959"
+            android:layout_toRightOf="@+id/ploce_textview"
+            android:layout_centerVertical="true"/>
+    </RelativeLayout>
+    <View
+        android:layout_below="@+id/relativelayout4"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="#cfcece" />
+    <RelativeLayout
+    android:id="@+id/relativelayout5"
+    android:layout_width="match_parent"
+    android:layout_height="100px"
+    android:layout_marginLeft="50px"
+    android:layout_below="@+id/relativelayout4">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="手机号: "
+        android:textSize="36px"
+        android:id="@+id/phone_textview"
+        android:textColor="#595959"
+        android:layout_centerVertical="true"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="36px"
+        android:id="@+id/phonenum_textview"
+        android:textColor="#595959"
+        android:layout_toRightOf="@+id/phone_textview"
+        android:layout_centerVertical="true"/>
+</RelativeLayout>
+    <View
+        android:layout_below="@+id/relativelayout5"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="#cfcece" />
+    <RelativeLayout
+        android:id="@+id/relativelayout6"
+        android:layout_width="match_parent"
+        android:layout_height="100px"
+        android:layout_marginLeft="50px"
+        android:layout_below="@+id/relativelayout5">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="固定电话: "
+            android:textSize="36px"
+            android:id="@+id/tel_textview"
+            android:textColor="#595959"
+            android:layout_centerVertical="true"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="36px"
+            android:id="@+id/telnum_textview"
+            android:textColor="#595959"
+            android:layout_toRightOf="@+id/tel_textview"
+            android:layout_centerVertical="true"/>
+    </RelativeLayout>
+    <View
+        android:layout_below="@+id/relativelayout6"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="#cfcece" />
+    <RelativeLayout
+        android:id="@+id/relativelayout7"
+        android:layout_width="match_parent"
+        android:layout_height="100px"
+        android:layout_marginLeft="50px"
+        android:layout_below="@+id/relativelayout6">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="邮箱: "
+            android:textSize="36px"
+            android:id="@+id/emile_textview"
+            android:textColor="#595959"
+            android:layout_centerVertical="true"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="36px"
+            android:id="@+id/emilenum_textview"
+            android:textColor="#595959"
+            android:layout_toRightOf="@+id/emile_textview"
+            android:layout_centerVertical="true"/>
+    </RelativeLayout>
+    <View
+        android:layout_below="@+id/relativelayout7"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="#cfcece" />
+
+</RelativeLayout>
