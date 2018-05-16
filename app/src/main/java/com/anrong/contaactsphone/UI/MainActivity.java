@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         fragments.add(new MysectionFragment());
         fragments.add(new MycontactFragment());
         fragments.add(new CallLogFragment());
-
+        ArrayList<String> list = new ArrayList<>();
         adapter = new MyAdapter(getSupportFragmentManager());
         contacts_viewpager.setAdapter(adapter);
         contacts_tab.setupWithViewPager(contacts_viewpager);
