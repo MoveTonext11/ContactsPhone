@@ -1,5 +1,6 @@
 package com.anrong.contaactsphone.UI;
 
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -23,8 +24,9 @@ public class MainActivity extends AppCompatActivity {
     private ViewPager contacts_viewpager;
     private TabLayout contacts_tab;
     private MyAdapter adapter;
-    private String[] titles = {"我的信息", "我的部门", "常用联系人","通话记录"};
+    private String[] titles = {"我的信息", "我的部门", "常用联系人", "通话记录"};
     private ArrayList<Fragment> fragments;
+    private SQLiteDatabase database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,8 +49,9 @@ public class MainActivity extends AppCompatActivity {
         adapter = new MyAdapter(getSupportFragmentManager());
         contacts_viewpager.setAdapter(adapter);
         contacts_tab.setupWithViewPager(contacts_viewpager);
+        contacts_viewpager.setOffscreenPageLimit(1);
         contacts_tab.setSelectedTabIndicatorHeight(0);//设置下划线宽度为0
-        contacts_tab.setTabTextColors(Color.BLACK,Color.WHITE);//底部导航切换颜色状态变更
+        contacts_tab.setTabTextColors(Color.BLACK, Color.WHITE);//底部导航切换颜色状态变更
 
     }
 
@@ -65,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
         public MyAdapter(FragmentManager fm) {
             super(fm);
         }
+
         @Override
         public Fragment getItem(int position) {
             return fragments.get(position);

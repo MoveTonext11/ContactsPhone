@@ -1,68 +1,72 @@
 package com.anrong.contaactsphone.Fragment;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.anrong.contaactsphone.Adapter.Myadapter;
+import com.anrong.contaactsphone.Bean.MessageInfoBean;
 import com.anrong.contaactsphone.R;
 import com.anrong.contaactsphone.UI.MessageInfoActivity;
+import com.anrong.contaactsphone.Utils.SqliteUtils;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by Administrator on 2018/4/24.
  */
 
-public class MycontactFragment extends Fragment {
+public class MycontactFragment extends BaseFragment {
 
     private ImageView back_image;
     private ListView list_contact;
+    private boolean isPrepared;
+    private MessageInfoBean bean;
+    private SQLiteDatabase db;
+    private Cursor cursor;
+    private Myadapter myadapter;
+    private List<MessageInfoBean> listinfo;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        isPrepared = true;
+        lazyLoad();
         View view = inflater.inflate(R.layout.mycontactfragment, container, false);
 
         initView(view);
 
         initdata();
+
         return view;
     }
 
     private void initdata() {
-        List<String> list = new ArrayList<>();
-        list.add("安荣测试1");
-        list.add("安荣测试2");
-        list.add("安荣测试3");
-        list.add("安荣测试4");
-        list.add("安荣测试4");
-        list.add("安荣测试4");
-        list.add("安荣测试4");
-        list.add("安荣测试4");
-        list.add("安荣测试4");
-        list.add("安荣测试4");
-        list.add("安荣测试4");
-        list.add("安荣测试4");
-        list.add("安荣测试4");
-        list.add("安荣测试4");
-        list.add("安荣测试4");
-        Myadapter myadapter = new Myadapter(getActivity(),list);
+        Log.d("ceshi","加载数据");
+        //数据库进行查询出集合数据
+        SqliteUtils sqliteUtils = new SqliteUtils(getActivity());
+        sqliteUtils.getinstance();
+        listinfo = sqliteUtils.querycymessage();
+
+        //适配器创建
+        myadapter = new Myadapter(getActivity(), listinfo);
         list_contact.setAdapter(myadapter);
         list_contact.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(getActivity(),""+i,Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(getActivity(),MessageInfoActivity.class));
+                String item = (String) myadapter.getItem(i);
+                Intent intent = new Intent(getActivity(), MessageInfoActivity.class);
+                intent.putExtra("num", item);
+                startActivity(intent);
             }
         });
     }
@@ -74,4 +78,18 @@ public class MycontactFragment extends Fragment {
     }
 
 
+    @Override
+    protected void lazyLoad() {
+        super.lazyLoad();
+        if (!isPrepared || !isVisible) {
+            return;
+        }
+        SqliteUtils sqliteUtils = new SqliteUtils(getActivity());
+        sqliteUtils.getinstance();
+        listinfo = sqliteUtils.querycymessage();
+        Log.d("ceshi","可见");
+        myadapter = new Myadapter(getActivity(), listinfo);
+        list_contact.setAdapter(myadapter);
+        myadapter.notifyDataSetChanged();
+    }
 }

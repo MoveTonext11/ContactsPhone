@@ -10,8 +10,10 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.anrong.contaactsphone.Bean.MessageInfoBean;
 import com.anrong.contaactsphone.Fragment.GlideCircleTransform;
 import com.anrong.contaactsphone.R;
+import com.anrong.contaactsphone.Utils.SqliteUtils;
 import com.bumptech.glide.Glide;
 
 import java.util.List;
@@ -22,9 +24,9 @@ import java.util.List;
 
 public class Myadapter extends BaseAdapter {
     private Context context;
-    private List<String> list;
+    private List<MessageInfoBean> list;
 
-    public Myadapter(Context context, List<String> list) {
+    public Myadapter(Context context, List<MessageInfoBean> list) {
         this.context = context;
         this.list = list;
     }
@@ -36,7 +38,7 @@ public class Myadapter extends BaseAdapter {
 
     @Override
     public Object getItem(int position) {
-        return list.get(position);
+        return list.get(position).getPoleceNum();
     }
 
     @Override
@@ -45,7 +47,7 @@ public class Myadapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup viewGroup) {
+    public View getView(final int position, View convertView, ViewGroup viewGroup) {
         ViewHolder holder;
         if (convertView == null) {
             convertView = LayoutInflater.from(context).inflate(R.layout.activity_yuemingxi, viewGroup, false);
@@ -54,7 +56,7 @@ public class Myadapter extends BaseAdapter {
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-        Glide.with(context).load("http://pic5.nipic.com/20091228/2588536_142951087553_2.jpg").transform(new GlideCircleTransform(context)).into(holder.image_message);
+        Glide.with(context).load(list.get(position).getImageUrl()).transform(new GlideCircleTransform(context)).into(holder.image_message);
         holder.image_start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -62,15 +64,22 @@ public class Myadapter extends BaseAdapter {
                 builder.setTitle("移除常用联系人").setMessage("本操作将把该联系人从常用联系人中删除，是否继续").setPositiveButton("确定", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        //调取移除的方法  并且  删除    刷新界面
-
+                        SqliteUtils sql = new SqliteUtils(context);
+                        sql.getinstance();
+                        int deletemessage = sql.deletemessage(list.get(position).id);
+                        //暴露接口出去刷新界面
+                        if (deletemessage==1){
+                            list.remove(position);
+                            notifyDataSetChanged();
+                        }else{
+                        }
                     }
                 }).setNegativeButton("取消", null).create().show();
             }
         });
-        holder.tv_username.setText(list.get(position));
-        holder.tv_userphone.setText("安荣手机");
-        holder.tv_userpolece.setText("安荣警号");
+        holder.tv_username.setText(list.get(position).getName());
+        holder.tv_userphone.setText(list.get(position).getPhoneNum());
+        holder.tv_userpolece.setText(list.get(position).getPoleceNum());
         return convertView;
     }
 
@@ -92,4 +101,14 @@ public class Myadapter extends BaseAdapter {
         }
 
     }
+
+
+//    public void deletemessageUI(Cymessage cymessage){
+//        this.cymessage=cymessage;
+//    }
+//    private Cymessage cymessage;
+//    public interface Cymessage{
+//        void deletemessage(boolean isdelete);
+//    }
+
 }

@@ -5,6 +5,7 @@ package com.anrong.contaactsphone.Bean;
  */
 
 public class MessageInfoBean {
+    public String id;
     private String name;
     private String PoleceNum;
     private String PhoneNum;
@@ -42,13 +43,4 @@ public class MessageInfoBean {
         ImageUrl = imageUrl;
     }
 
-    @Override
-    public String toString() {
-        return "MessageInfoBean{" +
-                "name='" + name + '\'' +
-                ", PoleceNum='" + PoleceNum + '\'' +
-                ", PhoneNum='" + PhoneNum + '\'' +
-                ", ImageUrl='" + ImageUrl + '\'' +
-                '}';
-    }
 }

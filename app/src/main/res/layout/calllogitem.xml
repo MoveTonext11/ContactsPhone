@@ -2,13 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="160px">
-    <ImageView
-        android:layout_width="70px"
-        android:layout_height="70px"
-        android:layout_marginLeft="50px"
-        android:id="@+id/imagephone"
-        android:background="@drawable/phone_get"
-        android:layout_centerVertical="true"/>
+
     <ImageView
         android:layout_width="100px"
         android:layout_height="100px"

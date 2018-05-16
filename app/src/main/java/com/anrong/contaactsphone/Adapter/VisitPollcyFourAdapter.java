@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.anrong.contaactsphone.Fragment.GlideCircleTransform;
 import com.anrong.contaactsphone.R;
 import com.anrong.contaactsphone.Bean.PollcyThree;
+import com.anrong.contaactsphone.Utils.SqliteUtils;
 import com.bumptech.glide.Glide;
 
 import java.util.List;
@@ -24,6 +25,7 @@ import java.util.List;
 public class VisitPollcyFourAdapter extends BaseExpandableListAdapter {
     private Context context;
     private List<PollcyThree> pollcyThrees;
+    private ImageView startmessage;
 
     public VisitPollcyFourAdapter(Context context, List<PollcyThree> pollcyThrees) {
         this.context = context;
@@ -75,17 +77,26 @@ public class VisitPollcyFourAdapter extends BaseExpandableListAdapter {
 
     @Override
     public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
-
         convertView = LayoutInflater.from(context).inflate(R.layout.fouritemxml, parent, false);
+
         ImageView image_photo=(ImageView) convertView.findViewById(R.id.image_photo);
         TextView tv_polecenum = (TextView) convertView.findViewById(R.id.tv_polecenum_item);
         final TextView tv_phoneenum_item = (TextView) convertView.findViewById(R.id.tv_phoneenum_item);
         TextView tv_name_item = (TextView) convertView.findViewById(R.id.tv_name_item);
-        tv_name_item.setText(pollcyThrees.get(groupPosition).pollcyFours.get(childPosition).content);
+        startmessage = (ImageView) convertView.findViewById(R.id.startmessage);
+        startmessage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SqliteUtils sql = new SqliteUtils(context);
+                sql.getinstance();
+                sql.addcymessage("信息1","警号","34123123123");
+            }
+        });
 
+        tv_name_item.setText(pollcyThrees.get(groupPosition).pollcyFours.get(childPosition).content);
         Glide.with(context).load("http://pic5.nipic.com/20091228/2588536_142951087553_2.jpg")
                .transform(new GlideCircleTransform(context)).into(image_photo);
-        tv_phoneenum_item.setText("测试警号");
+        tv_polecenum.setText("测试警号");
         tv_phoneenum_item.setText("12345678911");
         tv_name_item.setOnClickListener(new View.OnClickListener() {
             @Override

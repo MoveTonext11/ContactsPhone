@@ -31,13 +31,12 @@ public class MyMessageInfoFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.mymessageinfofragment, container, false);
-
         initView(view);
         initdata();
         return view;
     }
 
-    //数据请求      模拟
+    //数据请求      模拟    获取接口数据   根据什么？
     private void initdata() {
         Glide.with(this)
                 .load("http://pic17.nipic.com/20111023/8379629_143733545000_2.jpg")
@@ -50,6 +49,7 @@ public class MyMessageInfoFragment extends Fragment {
         telnum_textview.setText("1234-2141412");
         emilenum_textview.setText("mocvetofrist@163.com");
     }
+
     //数据填充
     private void initView(View view) {
         back_image = (ImageView) view.findViewById(R.id.back_image);
