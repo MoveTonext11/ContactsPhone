@@ -66,9 +66,9 @@ public class Myadapter extends BaseAdapter {
                     public void onClick(DialogInterface dialogInterface, int i) {
                         SqliteUtils sql = new SqliteUtils(context);
                         sql.getinstance();
-                        int deletemessage = sql.deletemessage(list.get(position).id);
+                        long deletemessage = sql.deletemessage(list.get(position).id);
                         //暴露接口出去刷新界面
-                        if (deletemessage==1){
+                        if (Long.bitCount(deletemessage)==1){
                             list.remove(position);
                             notifyDataSetChanged();
                         }else{

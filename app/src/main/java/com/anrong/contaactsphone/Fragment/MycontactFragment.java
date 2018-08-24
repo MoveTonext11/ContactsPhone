@@ -5,7 +5,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,7 +50,6 @@ public class MycontactFragment extends BaseFragment {
     }
 
     private void initdata() {
-        Log.d("ceshi","加载数据");
         //数据库进行查询出集合数据
         SqliteUtils sqliteUtils = new SqliteUtils(getActivity());
         sqliteUtils.getinstance();
@@ -87,7 +85,6 @@ public class MycontactFragment extends BaseFragment {
         SqliteUtils sqliteUtils = new SqliteUtils(getActivity());
         sqliteUtils.getinstance();
         listinfo = sqliteUtils.querycymessage();
-        Log.d("ceshi","可见");
         myadapter = new Myadapter(getActivity(), listinfo);
         list_contact.setAdapter(myadapter);
         myadapter.notifyDataSetChanged();

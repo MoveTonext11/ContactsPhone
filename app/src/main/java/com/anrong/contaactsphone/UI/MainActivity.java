@@ -42,17 +42,16 @@ public class MainActivity extends AppCompatActivity {
     private void initdata() {
         fragments = new ArrayList<>();
         fragments.add(new MyMessageInfoFragment());
-        fragments.add(new MysectionFragment());
+        fragments.add(new MysectionFragment(this));
         fragments.add(new MycontactFragment());
         fragments.add(new CallLogFragment());
 
         adapter = new MyAdapter(getSupportFragmentManager());
         contacts_viewpager.setAdapter(adapter);
         contacts_tab.setupWithViewPager(contacts_viewpager);
-        contacts_viewpager.setOffscreenPageLimit(1);
+        contacts_viewpager.setOffscreenPageLimit(3);
         contacts_tab.setSelectedTabIndicatorHeight(0);//设置下划线宽度为0
         contacts_tab.setTabTextColors(Color.BLACK, Color.WHITE);//底部导航切换颜色状态变更
-
     }
 
 

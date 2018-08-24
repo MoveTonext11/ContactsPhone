@@ -53,7 +53,9 @@ public class CallhostLogAdapter extends BaseAdapter {
         }else{
             holder = (ViewHolder) convertView.getTag();
         }
-        holder.tv_polecenum_item.setText(listinfo.get(i).getPoleceNum());
+        String poleceNum = listinfo.get(i).getPoleceNum();
+        int time = Integer.parseInt(poleceNum);
+        holder.tv_polecenum_item.setText(time/1000+"秒");
         holder.tv_phoneenum_item.setText(listinfo.get(i).getPhoneNum());
         holder.tv_name_item.setText(listinfo.get(i).getName());
         return convertView;
@@ -69,7 +71,6 @@ public class CallhostLogAdapter extends BaseAdapter {
 
         public ViewHolder(View rootView) {
             this.rootView = rootView;
-            this.imagephone = (ImageView) rootView.findViewById(R.id.imagephone);
             this.image_photo = (ImageView) rootView.findViewById(R.id.image_photo);
             this.tv_name_item = (TextView) rootView.findViewById(R.id.tv_name_item);
             this.tv_polecenum_item = (TextView) rootView.findViewById(R.id.tv_polecenum_item);

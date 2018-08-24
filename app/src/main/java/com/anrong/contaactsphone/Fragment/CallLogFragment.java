@@ -4,7 +4,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,7 +22,7 @@ import java.util.List;
  * Created by Administrator on 2018/4/24.
  */
 
-public class CallLogFragment extends Fragment implements View.OnClickListener {
+public class CallLogFragment extends BaseFragment implements View.OnClickListener {
 
     private ImageView back_image;
     private RelativeLayout relativelayout1;
@@ -33,10 +32,13 @@ public class CallLogFragment extends Fragment implements View.OnClickListener {
     private MessageInfoBean bean;
     private SQLiteDatabase db;
     private Cursor cursor;
+    private boolean isPrepared;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        isPrepared = true;
+        lazyLoad();
         View view = inflater.inflate(R.layout.calllogfragment, container, false);
 
         initView(view);
@@ -53,7 +55,7 @@ public class CallLogFragment extends Fragment implements View.OnClickListener {
         //便利数据库进行查询出集合数据
         SqliteUtils sql = new SqliteUtils(getActivity());
         sql.getinstance();
-        listinfo = sql.querycymessage();
+        listinfo = sql.querycalllog();
 
         adapter = new CallhostLogAdapter(getActivity(), this.listinfo);
         list_calllog.setAdapter(adapter);
@@ -73,5 +75,14 @@ public class CallLogFragment extends Fragment implements View.OnClickListener {
                 getActivity().finish();
                 break;
         }
+    }
+
+    @Override
+    protected void lazyLoad() {
+        super.lazyLoad();
+        if (!isPrepared || !isVisible) {
+            return;
+        }
+        initdata();
     }
 }

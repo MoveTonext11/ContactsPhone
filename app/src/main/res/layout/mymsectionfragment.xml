@@ -40,9 +40,9 @@
             android:background="@drawable/query"/>
     </RelativeLayout>
 
-    <ExpandableListView
-        android:id="@+id/list_item"
+    <ListView
+        android:layout_below="@+id/re_id"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/re_id" />
+        android:id="@+id/tree_lv" />
 </RelativeLayout>
