@@ -2,10 +2,35 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <!--页面背景色-->
+        <item name="android:windowBackground">@color/light_grey</item>
+
+        <!--应用的主要文字颜色，actionBar的标题文字默认使用该颜色-->
+        <item name="android:textColorPrimary">@android:color/black</item>
+
+        <!--ToolBar上的Title颜色-->
+        <item name="android:textColorPrimaryInverse">@color/text_light</item>
+
+        <!--应用的前景色，ListView的分割线，switch滑动区默认使用该颜色-->
+        <item name="android:colorForeground">@color/colorForeground</item>
+        <!--应用的背景色，popMenu的背景默认使用该颜色-->
+        <item name="android:colorBackground">@color/colorForeground</item>
+
+
+        <!--Button，textView的文字颜色-->
+        <item name="android:textColor">@color/text_dark</item>
+
+        <!--RadioButton checkbox等控件的文字-->
+        <item name="android:textColorPrimaryDisableOnly">@color/text_dark</item>
+
+
+
+        <!--对话框的背景是否变暗-->
+        <item name="android:backgroundDimEnabled">true</item>
+
+
+
+
     </style>
 
     <style name="Base.Widget.Design.TabLayout" parent="android:Widget">

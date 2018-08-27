@@ -7,9 +7,7 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
 
 import com.anrong.contaactsphone.Adapter.CallhostLogAdapter;
 import com.anrong.contaactsphone.Bean.MessageInfoBean;
@@ -24,8 +22,6 @@ import java.util.List;
 
 public class CallLogFragment extends BaseFragment implements View.OnClickListener {
 
-    private ImageView back_image;
-    private RelativeLayout relativelayout1;
     private ListView list_calllog;
     private CallhostLogAdapter adapter;
     private List<MessageInfoBean> listinfo;
@@ -62,18 +58,13 @@ public class CallLogFragment extends BaseFragment implements View.OnClickListene
     }
 
     private void initView(View view) {
-        back_image = (ImageView) view.findViewById(R.id.back_image);
-        relativelayout1 = (RelativeLayout) view.findViewById(R.id.relativelayout1);
         list_calllog = (ListView) view.findViewById(R.id.list_calllog);
-        back_image.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.back_image:
-                getActivity().finish();
-                break;
+
         }
     }
 

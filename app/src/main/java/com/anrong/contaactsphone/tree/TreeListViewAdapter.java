@@ -38,22 +38,16 @@ public abstract class TreeListViewAdapter<T> extends BaseAdapter {
 	 */
 	private OnTreeNodeClickListener onTreeNodeClickListener;
 
+	/**
+	 * 点击事件
+	 */
 	public interface OnTreeNodeClickListener {
-		/**
-		 * 处理node click事件
-		 * @param node
-		 * @param position
-		 */
 		void onClick(Node node, int position);
-		void onLongClick(Node node, int position);
-
 	}
-
 	public void setOnTreeNodeClickListener(
 			OnTreeNodeClickListener onTreeNodeClickListener) {
 		this.onTreeNodeClickListener = onTreeNodeClickListener;
 	}
-
 	/**
 	 * 
 	 * @param mTree
@@ -86,25 +80,12 @@ public abstract class TreeListViewAdapter<T> extends BaseAdapter {
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
 				expandOrCollapse(position);
-
 				if (onTreeNodeClickListener != null) {
 					onTreeNodeClickListener.onClick(mNodes.get(position), position);
 				}
 			}
 
 		});
-
-		mTree.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-			@Override
-			public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
-				if (onTreeNodeClickListener != null) {
-					onTreeNodeClickListener.onLongClick(mNodes.get(i), i);
-				}
-				return false;
-
-			}
-		});
-
 	}
 
 	/**

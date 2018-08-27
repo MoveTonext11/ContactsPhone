@@ -18,7 +18,6 @@ import com.bumptech.glide.Glide;
 
 public class MyMessageInfoFragment extends Fragment {
 
-    private ImageView back_image;
     private TextView updata_textview;
     private TextView setname_textview;
     private TextView plocenum_textview;
@@ -52,13 +51,6 @@ public class MyMessageInfoFragment extends Fragment {
 
     //数据填充
     private void initView(View view) {
-        back_image = (ImageView) view.findViewById(R.id.back_image);
-        back_image.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                getActivity().finish();
-            }
-        });
         mapimageview = (ImageView) view.findViewById(R.id.mapimageview);
         setname_textview = (TextView) view.findViewById(R.id.setname_textview);
         plocenum_textview = (TextView) view.findViewById(R.id.plocenum_textview);

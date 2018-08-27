@@ -11,12 +11,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.anrong.contaactsphone.Bean.MyNodeBean;
 import com.anrong.contaactsphone.Bean.MyTreeListViewAdapter;
 import com.anrong.contaactsphone.R;
-import com.anrong.contaactsphone.Utils.SqliteUtils;
 import com.anrong.contaactsphone.tree.Node;
 import com.anrong.contaactsphone.tree.TreeListViewAdapter;
 
@@ -65,21 +63,7 @@ public class MysectionFragment extends Fragment {
                     diallPhone("10010");
                 }
             }
-
-            @Override
-            public void onLongClick(Node node, int position) {
-                if (node.isLeaf()) {
-                    SqliteUtils sql = new SqliteUtils(context);
-                    sql.getinstance();
-                    long addcymessage = sql.addcymessage(node.getName(), node.getIcon(), "34123");
-                    if (Long.bitCount(addcymessage)!=0){
-                        Toast.makeText(context, "常用联系人添加成功", Toast.LENGTH_SHORT).show();
-                    }
-
-                }
-            }
         });
-
         tree_lv.setAdapter(adapter);
     }
 

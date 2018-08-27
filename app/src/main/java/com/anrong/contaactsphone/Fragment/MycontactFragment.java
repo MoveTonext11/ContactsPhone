@@ -9,7 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.anrong.contaactsphone.Adapter.Myadapter;
@@ -26,7 +25,6 @@ import java.util.List;
 
 public class MycontactFragment extends BaseFragment {
 
-    private ImageView back_image;
     private ListView list_contact;
     private boolean isPrepared;
     private MessageInfoBean bean;
@@ -70,7 +68,6 @@ public class MycontactFragment extends BaseFragment {
     }
 
     private void initView(View view) {
-        back_image = (ImageView) view.findViewById(R.id.back_image);
         list_contact = (ListView) view.findViewById(R.id.list_contact);
         list_contact.setVerticalScrollBarEnabled(false);
     }
