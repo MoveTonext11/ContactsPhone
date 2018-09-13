@@ -59,7 +59,8 @@ public class TreeHelper {
 
 		nodes.add(node);
 		if (defaultExpandLeval >= currentLevel) {
-			node.setExpand(true);
+			// TODO 决定挂在的列表是否展开
+			node.setExpand(false);
 		}
 
 		if (node.isLeaf())
@@ -107,6 +108,8 @@ public class TreeHelper {
 
 			Class<? extends Object> clazz = t.getClass();
 			Field[] declaredFields = clazz.getDeclaredFields();
+			// TODO 设置nodebean与node对应数据一致  并添加所有到所有
+			//nodebean对应响应数据   node对应UI数据
 			/**
 			 * 与MyNodeBean实体一一对应
 			 */

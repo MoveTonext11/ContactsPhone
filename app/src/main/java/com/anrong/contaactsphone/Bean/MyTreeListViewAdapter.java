@@ -57,12 +57,13 @@ public class MyTreeListViewAdapter<T> extends TreeListViewAdapter<T> {
 			setCheckBoxBg(viewHolder.checkBox,node.isChecked());
 		}
 		viewHolder.label.setText(node.getName());
+		//星标点击事件
 		viewHolder.start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 SqliteUtils sql = new SqliteUtils(mContext);
                 sql.getinstance();
-                //添加联系人  插入数据库
+                //添加联系人  插入数据库   判断返回条件是否电话已存在
                 long addcymessage = sql.addcymessage(node.getName(), node.getIcon(), "34123");
                 if (String.valueOf(addcymessage).equals("-1")){
 					Toast.makeText(mContext, "常用联系已存在", Toast.LENGTH_SHORT).show();
@@ -93,4 +94,5 @@ public class MyTreeListViewAdapter<T> extends TreeListViewAdapter<T> {
 			cb.setBackgroundResource(R.drawable.check_box_bg);
 		}
 	}
+
 }
